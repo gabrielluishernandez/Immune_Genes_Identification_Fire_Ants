@@ -1,0 +1,10 @@
+# Apis mellifera genes obtained form supplementary material from Accelerated 
+# Evolution of Innate Immunity Proteins in Social Insects: Adaptive Evolution 
+# or Relaxed Constraint? Brock, Amro, 2013.
+
+# The gene names from Table S1 were searched in NCBI ->homology link-> OrthoDB v.10.1-> SI-gene id.
+
+# For genes lis1 and spz, there was no result in OrthoDB 
+# so I did a BLASTp for them in the SI proteins to get the ids.
+
+awk '{print $2}' homology_table.txt | grep "LOC" >> SI_ids_from_AM.txt 

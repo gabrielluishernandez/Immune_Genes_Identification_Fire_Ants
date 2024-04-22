@@ -1,0 +1,15 @@
+A-mell_name	SI_gene	REF
+gnbp1	LOC105194757	Rapid-evolution-of-immune-proteins-in-social-insects
+def2	LOC105207821	-
+def2	LOC105196210	Two-structurally-different-defensin-genes,-one-of-them-encoding-a-novel-defensin-isoform,-are-expressed-in-honeybee-Apis-mellifera
+dl	LOC105205802	Silencing-of-Apis-mellifera-dorsal-genes-reveals-their-role-in-expression-of-the-antimicrobial-peptide-defensin-1
+lys1	LOC105199375	Insights-into-social-insects-from-the-genome-of-the-honeybee-Apis-mellifera
+myd88	LOC105201138	-
+pli	LOC105202866	-
+pgrp-sa	LOC105203112	-
+pgrp-sa	LOC105203375	-
+pgrp-lc	LOC105193431	-
+pro-PO	LOC105197777	Molecular-characterization-of-a-cDNA-encoding-prophenoloxidase-and-its-expression-in-Apis-mellifera
+psh	LOC105192892	serine-protease-snake
+spz	LOC105194156	protein-Spaetzle
+tl	LOC105194815	protein-toll
