@@ -1,0 +1,13 @@
+# The file input/amiGO.txt is a list of FlyBase gene IDs for Drosophila genes 
+# in the Gene Ontology category “immune system processes (GO:0002376).
+
+# Create a list of non-redundant IDs
+
+sort -u input/amiGO.txt > input/amiGO_SORTED.txt
+
+# input/Ensembl_Original_results.txt is	the result of the Ensemble search.
+# It contains the gene stable IDs for S. invicta genes with homologous in input/amiGO_SORTED.txt Drosophila set.
+
+# Create a list of S. invicta genes which are homologous to D. melanogaster original list.
+
+cut -f 2 input/Ensembl_Original_results.txt | sort -u > results/SI_Genes_only.txt
