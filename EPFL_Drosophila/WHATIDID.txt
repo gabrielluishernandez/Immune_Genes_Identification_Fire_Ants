@@ -1,0 +1,20 @@
+# The list of Drosophila immune genes was saved in input/Immune_genes-EPFL.txt comes from: 
+# https://www.epfl.ch/labs/lemaitrelab/lemaitre-lab/resources/list-of-drosophila-genes-potentially-involved-in-the-immune-response/ 
+
+# As this list have no-standar IDs, I had to download the NCBI Drosophila gene 
+# information as this have the equivalences between the required identifiers:
+# https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Invertebrates/Drosophila_melanogaster.gene_info.gz
+
+# Add "\s" to ensure matching IDs in downstream commands.
+# The -i option is for sed to edit the file in place and avoid creating a new file.
+sed -i 's/$/\\s/' Drosophila_melanogaster.gene_info
+
+#Extrac FlyBase identifiers of interest
+grep -f input/Immune_genes-EPFL.txt input/Drosophila_melanogaster.gene_info | cut -f 6 > flybased-ids.txt
+cut -d ":" -f 2 flybased-ids.txt > ids_flybase_clean.txt
+
+# Use Biomart to get Gene Stable IDs in Ensembl Metazoa mart_export_ensembl.txt
+# (resutl Ensembl orthologous 2020)
+
+grep "LOC" mart_export_ensembl.txt | cut -f 2 | sort -u  > SI_homologs_EPFL.txt
+
