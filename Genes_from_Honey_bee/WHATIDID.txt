@@ -9,7 +9,13 @@ awk '{print $2}' homology_table.txt | grep "LOC" >> SI_ids_from_AM.txt
 # For genes lis1 and spz, there was no result in OrthoDB 
 # so I did a BLASTp for them in the SI proteins to get the ids.
 
+#Create a blast database with the protein sequences from S. invicta
 makeblastdb -in input/S_inv_longest_isoform.aa -dbtype prot -out tmp/s_inv_protein_db
-blastp -query input/apis_immune_genes.fasta -db tmp/s_inv_protein_db -out results/blast_results.txt -outfmt 6
 
- 
+# Run BLAST to obtain correct protein IDs from our data
+blastp -db tmp/s_inv_protein_db -max_target_seqs 1 -max_hsps 1 -query input/apis_immune_genes.fasta -outfmt 7 > tmp/blast_results_domains.tsv
+
+# Get the invicta IDs from the Blast output.
+grep -v "#" tmp/blast_results_domains.tsv | cut -f 2  | sort -u > tmp/protins_in_S_invicta.txt
+
+# Use Biomart to get Gene Stable IDs in Ensembl Metazoa

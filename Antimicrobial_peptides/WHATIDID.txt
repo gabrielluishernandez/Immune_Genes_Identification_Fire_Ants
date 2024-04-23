@@ -22,6 +22,20 @@ grep -f -F input/Domains_asociated_AMPs.txt input/Solenopsis_invicta_longest_iso
 # as query for BioMart in Ensambl Metazoa.
 # This process identified 15 S. invicta proteins with PFAM domains characteristic of AMPs in insects.
 
+###### AMPs in ants
+# The following work was donw with information from: 
+# "Comparative genomics analysis of five families of antimicrobial
+# peptide-like genes in seven ant species". 
+# In private communication I obtained the file input/AMP_from_S_invicta_Zhang.aa
 
+#Create a blast database with the protein sequences from S. invicta 
+makeblastdb -in input/S_inv_longest_isoform.aa -dbtype prot -out tmp/s_inv_protein_db
 
+# Run BLAST to obtain correct protein IDs from our data
+blastp -db tmp/s_inv_protein_db -max_target_seqs 1 -max_hsps 1 -query input/AMP_from_S_invicta_Zhang.aa -outfmt 7 > results/blast_results.txt
+
+# Get the invicta IDs from the BLAST output
+grep -v "#" tmp/blast_results_domains.tsv | cut -f 2  | sort -u > tmp/AMPs_in_S_invicta.txt
+
+# Use Biomart to get Gene Stable IDs from Ensembl Metazoa 
 
