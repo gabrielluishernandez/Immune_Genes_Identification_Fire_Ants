@@ -1,0 +1,17 @@
+LOC105207821	uncharacterized-protein
+LOC105193709	waprin-Thr1-like
+LOC105193710	waprin-Phi1
+LOC105197551	anosmin-1
+LOC105200377	uncharacterized-protein
+LOC105195836	papilin
+LOC105196122	neurogenic-locus-notch-homolog-protein-1
+LOC105196210	defensin
+LOC105198932	defensin-2
+LOC113003652	defensin-like
+LOC105195721	abaecin-1-precursor
+LOC105208229	uncharacterized
+LOC105196795	hymenoptaecin
+LOC105197841	uncharacterized
+LOC105195660	omega-conotoxin-like
+LOC105195656	neuropeptide-like-32
+LOC105208058	uncharacterized

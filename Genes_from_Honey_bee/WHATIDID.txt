@@ -4,7 +4,12 @@
 
 # The gene names from Table S1 were searched in NCBI ->homology link-> OrthoDB v.10.1-> SI-gene id.
 
+awk '{print $2}' homology_table.txt | grep "LOC" >> SI_ids_from_AM.txt
+
 # For genes lis1 and spz, there was no result in OrthoDB 
 # so I did a BLASTp for them in the SI proteins to get the ids.
 
-awk '{print $2}' homology_table.txt | grep "LOC" >> SI_ids_from_AM.txt 
+makeblastdb -in input/S_inv_longest_isoform.aa -dbtype prot -out tmp/s_inv_protein_db
+blastp -query input/apis_immune_genes.fasta -db tmp/s_inv_protein_db -out results/blast_results.txt -outfmt 6
+
+ 
