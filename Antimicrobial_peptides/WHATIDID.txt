@@ -1,0 +1,27 @@
+# The file input/Domains_asociated_AMPs.txt is a list of PFAM domains
+# Associated with immunity, reported in 
+# "Diversity, evolution and medical applications of insect antimicrobial peptides"
+# https://royalsocietypublishing.org/doi/full/10.1098/rstb.2015.0290 
+
+# Scan the proteins of S. invicta to identifyt PFAM domains
+# Download PFAM HMM database
+wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+
+# Decompress and index the PFAM HMM database
+gunzip Pfam-A.hmm.gz
+hmmpress Pfam-A.hmm
+
+# Run hmmscan
+hmmscan -o input/Solenopsis_invicta_longest_isoform.pfamscan Pfam-A.hmm input/Solenopsis_invicta_longest_isoform.fasta
+
+# Extract protein IDs that have the PFAM domains of interest:
+grep -f -F input/Domains_asociated_AMPs.txt input/Solenopsis_invicta_longest_isoform.pfamscan /
+| cut -f1 > tmp/Protein_ids_result.txt
+
+# To obtain stable gen IDs, take tmp/Protein_ids_result.txt and use it 
+# as query for BioMart in Ensambl Metazoa.
+# This process identified 15 S. invicta proteins with PFAM domains characteristic of AMPs in insects.
+
+
+
+
